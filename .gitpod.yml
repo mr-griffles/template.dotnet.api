@@ -6,7 +6,7 @@ tasks:
     init: sh ./cde/docker_build.sh
     command: |
       gp sync-done dockerrun
-      h ./cde/docker_run.sh
+      sh ./cde/docker_run.sh
   - name: Open Swagger
     command: |
       gp sync-await dockerrun
