@@ -3,10 +3,10 @@ image:
 
 tasks:
   - name: Build & Run Container
+    init: sh ./cde/docker_build.sh
     command: |
-      gp sync-done dockerrun
-      sh ./cde/docker_build.sh
       sh ./cde/docker_run.sh
+      gp sync-done dockerrun
   - name: Open Swagger
     command: |
       gp sync-await dockerrun
