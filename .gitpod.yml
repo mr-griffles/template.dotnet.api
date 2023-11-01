@@ -1,0 +1,19 @@
+image:
+  file: .cde.Dockerfile
+
+tasks:
+  - name: Build & Run Container
+    init: docker build -t weatherforecast .
+    command: |
+      gp sync-done dockerrun
+      docker run -d -p 8000:3000 --name weatherforecast weatherforecast
+  - name: Open Swagger
+    command: |
+      gp sync-await dockerrun
+      gp preview $(gp url 8000)/swagger/index.html
+
+vscode:
+  extensions:
+    - muhammad-sammy.csharp
+    - ms-dotnettools.csharp
+    - ms-azuretools.vscode-docker
